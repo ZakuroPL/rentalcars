@@ -1,0 +1,95 @@
+#screenCar {
+  min-height: 1000px;
+  width: 800px;
+  margin: 20px auto;
+}
+
+#loading {
+  position: absolute;
+  top: 600px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.blueBar {
+  background-color: #1670B7;
+  color: white;
+}
+
+.yellowBar {
+  background-color: #EECE6A;
+  margin: 200px auto 50px auto;
+  padding: 20px;
+  width: 1000px;
+  position: relative;
+}
+
+#timeFrom {
+  position: absolute;
+  left: 260px;
+  top: 0px;
+}
+
+#timeTo {
+  position: absolute;
+  left: 658px;
+  top: 0px;
+}
+
+.dateTo {
+  margin-left: 135px;
+}
+
+#button-yellow-bar {
+  background-color: #1670B7;
+  color: white;
+  position: absolute;
+  left: 820px;
+  top: 38px;
+  padding: 5px;
+}
+
+.carFromList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 0px;
+      grid-template-areas: "photo name price" "photo details price";
+}
+
+.car-photo {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: photo;
+}
+
+.car-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: name;
+}
+
+.car-details {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: details;
+}
+
+.car-price {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: price;
+}
+
+.button-cars {
+  background-color: #1670B7;
+  color: white;
+  padding: 5px;
+}
+/*# sourceMappingURL=styles.css.map */

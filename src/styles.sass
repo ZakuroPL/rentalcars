@@ -1,1 +1,168 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap'
+
+h1
+    padding: 140px 0px 20px 20px
+    margin: 0px auto
+    width: 1000px
+    @media screen and (max-width: 999px) 
+        width: auto
+    @media screen and (max-width: 412px)  
+        font-size: 32px
+#screenCar
+    width: 800px
+    min-height: 200px
+    margin: 20px auto
+    @media screen and (max-width: 810px)
+        width: 98%
+#loading
+    position: absolute
+    top: 600px
+    left: 50%
+    transform: translate(-50%, -50%)
+.blueBar
+    background-color: #1670B7
+    color: white
+.yellowBar
+    background-color: #EECE6A 
+    margin: 10px auto 50px auto
+    padding: 20px
+    width: 1000px
+    position: relative
+    @media screen and (max-width: 999px)
+        width: auto
+        min-height: 300px
+.insideYellowBar
+    @media screen and (max-width: 999px)
+        position: relative
+        width: 403px
+        margin: auto
+    @media screen and (max-width: 500px)
+        position: relative
+        width: 314px
+        margin: auto
+#inputTo
+    @media screen and (max-width: 999px)
+        position: absolute
+        margin: 20px 20px 20px 0px  
+        left: 0px
+        top: 141px
+#inputFrom
+    @media screen and (max-width: 999px)
+        position: absolute
+        margin: 20px 20px 20px 0px     
+        left: 0px
+        top: 18px
+#timeFrom
+    position: absolute
+    left: 260px
+    top: 0px
+    @media screen and (max-width: 500px)  
+        left: 170px
+#timeTo
+    position: absolute
+    left: 658px
+    top: 0px
+    @media screen and (max-width: 999px)
+        left: 260px
+        top: 123px   
+    @media screen and (max-width: 500px)  
+        left: 170px
+#textFrom
+    color: black
+    position: absolute
+    left: 30px
+    top: 10px
+    @media screen and (max-width: 999px)
+        left: 0px
+#textTo
+    color: black
+    position: absolute
+    left: 427px
+    top: 10px
+    @media screen and (max-width: 999px)
+        left: 0px
+        top: 131px  
+        
+.dateTo
+    margin-left: 135px
+    width: auto
+#button-yellow-bar
+    position: absolute
+    left: 820px
+    top: 38px
+    @media screen and (max-width: 999px)
+        left: 0px
+        top: 220px
+.carFromList
+    display: grid
+    grid-template-columns: auto auto 130px
+    grid-template-rows: 1fr 1fr
+    gap: 0px
+    grid-template-areas: "photo name price" "photo details price"
+    margin-bottom: 30px
+    @media screen and (max-width: 730px)
+        grid-template-columns: auto
+        grid-template-rows: auto auto auto auto
+        grid-template-areas: "photo" "name" "details" "price"
+        width: 300px
+        margin: auto
+.car-photo
+    grid-area: photo
+    @media screen and (min-width: 820px)
+        img
+            position: relative
+            left: -10px
+            top: -20px
+.car-name
+    grid-area: name
+.car-details
+    grid-area: details
+.car-price
+    grid-area: price
+    text-align: right
+    padding: 30px 10px 10px 0px
+    h2
+        padding: 0px
+#form200
+    width: 200px
+    @media screen and (max-width: 500px)  
+        width: 120px
+#form200b
+    width: 200px
+    @media screen and (max-width: 500px)  
+        width: 120px
+.form-choiced-car
+    display: grid
+    grid-template-columns: 300px auto
+    grid-gap: 50px
+    label
+        margin: 20px 0px 0px 0px
+    @media screen and (max-width: 660px)   
+        grid-template-columns: auto
+        grid-template-rows: auto auto
+        text-align: center  
+        
+.errorInput
+    margin: 0
+    color: red
+button
+    &:focus
+        outline: 0px 
+.button
+    background-color: #1670B7
+    color: white
+    padding: 5px
+    &:focus
+        background-color: #155e96
+
+    
+
+
+
+
+
+
+
+
+
+

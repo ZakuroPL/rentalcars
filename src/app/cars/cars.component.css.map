@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "cars.component.sass"
+    ],
+    "names": [],
+    "file": "cars.component.css"
+}
