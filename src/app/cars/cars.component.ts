@@ -3,6 +3,25 @@ import { ApiService } from '../api.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+interface car{
+  id:number;
+  car:string;
+  carPicture:string;
+  seats:number;
+  trunk:string;
+  price:number;
+  fuel:string;
+  gearbox:string;
+}
+interface rental{
+  id:number;
+  car:number;
+  rentFrom:Date;
+  rentTo:Date;
+}
+
+interface cars extends Array<car>{}
+interface rentals extends Array<rental>{}
 
 @Component({
   selector: 'app-cars',
@@ -12,8 +31,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CarsComponent implements OnInit {
 
   eventSubscription:Subscription;
-  cars: any;
-  rentalList: any;
+  cars: Array<car>;
+  rentalList: Array<rental>;
   rentalForm: FormGroup;
   @Input() dateFrom: Date;
   @Input() dateTo: Date;
@@ -26,11 +45,11 @@ export class CarsComponent implements OnInit {
 
   checkAmount:number = 0;
 
-  isLoading = false;
-  isChoiced = false;
-  isClicked = false;
-  isConfirm = false;
-  isEmpty = false;
+  isLoading:boolean = false;
+  isChoiced:boolean = false;
+  isClicked:boolean = false;
+  isConfirm:boolean = false;
+  isEmpty:boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -53,16 +72,17 @@ export class CarsComponent implements OnInit {
 
   showCarList(){
     this.rentalForm.reset();
+    this.isEmpty = false;
     this.isConfirm = false;
     this.isLoading = true;
     this.cars = [];
     this.rentalList = [];
     this.apiService.getCarList().subscribe(
-      data => {
+      (data: cars) => {
         this.isChoiced = false;
         this.cars = data;
         this.apiService.getRentalList().subscribe(
-          data => {
+          (data:rentals) => {
             this.rentalList = data;
             this.continueCarList();
           },
@@ -92,7 +112,6 @@ export class CarsComponent implements OnInit {
       }
     }
     this.isLoading = false;
-    console.log(this.cars);
     if(this.cars.length == this.checkAmount) this.isEmpty = true;
   }
   getCarId(id, car, price, carName){

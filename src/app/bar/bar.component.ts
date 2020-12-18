@@ -46,7 +46,7 @@ export class BarComponent implements OnInit {
   changeCalendar(event) {
     this.screenWidth = window.innerWidth;
   }
-
+//boostrap datepicker
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
@@ -57,19 +57,19 @@ export class BarComponent implements OnInit {
       this.fromDate = date;
     }
   }
-
+//boostrap datepicker
   isHovered(date: NgbDate) {
     return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
   }
-
+//boostrap datepicker
   isInside(date: NgbDate) {
     return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
   }
-
+//boostrap datepicker
   isRange(date: NgbDate) {
     return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
   }
-
+//boostrap datepicker
   validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;

@@ -10,6 +10,10 @@ export class ApiService {
   carURL = "https://zakuro-warehouse.herokuapp.com/api/car/"
   searchURL = "https://zakuro-warehouse.herokuapp.com/api/rental-search/"
   rentURL = "https://zakuro-warehouse.herokuapp.com/api/rental-full/"
+
+  // carURL = "http://127.0.0.1:8000/api/car/"
+  // searchURL = "http://127.0.0.1:8000/api/rental-search/"
+  // rentURL = "http://127.0.0.1:8000/api/rental-full/"
   
 
   constructor(
