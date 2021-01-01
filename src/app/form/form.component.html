@@ -1,0 +1,36 @@
+<div *ngIf="obj && obj2 && !isChoiced" class="form-choiced-car screenCar">
+    <div>
+        <img src="../../assets/{{obj2.pictureName}}.jpg"><br><br><br>
+    </div>
+    <div>
+        <h2>Wynajem auta {{ (obj2.carName ) }}.</h2>
+        <h3>na {{ obj.amountOfDays }}
+            <span *ngIf="obj.amountOfDays == 1">dzień.</span>
+            <span *ngIf="obj.amountOfDays > 1">dni.</span>
+        </h3>
+        <h3 style="border-bottom: 1px black solid; margin-bottom: 50px; padding-bottom: 15px;">za {{ obj2.rentPrice }} zł.</h3>
+        <form [formGroup]="rentalForm" (submit)="sendForm()">
+            <label>Imię:<br><input formControlName="firstName" name="firstName" type="text"></label><br>
+            <p class="errorInput" *ngIf="isClicked && f.firstName.errors?.required">wprowadź imię.</p>
+
+            <label>Nazwisko:<br><input formControlName="lastName" name="lastName" type="text"></label><br>
+            <p class="errorInput" *ngIf="isClicked && f.lastName.errors?.required">wprowadź nazwisko.</p>
+
+            <label>Numer telefonu:<br><input formControlName="phoneNumber" name="phoneNumber" type="tel"></label><br>
+            <p class="errorInput" *ngIf="isClicked && f.phoneNumber.errors?.required">wprowadź nr. telefonu.</p>
+            <p class="errorInput" *ngIf="isClicked && f.phoneNumber.errors?.pattern">wprowadź numer 000000000</p>
+
+            <label>email:<br><input formControlName="email" name="email" type="email"></label><br>
+            <p class="errorInput" *ngIf="isClicked && f.email.errors?.required">wprowadź adres email.</p>
+            <p class="errorInput" *ngIf="isClicked && f.email.errors?.pattern">wprowadź poprawny adres email.</p>
+            <br>
+        </form>
+        <button class="button" (click)="isClicked=false; interaction.backMessage()">Cofnij</button>
+        <button class="button" style="margin-left: 15px;" (click)="sendForm()">Rezerwuj</button>
+        
+    </div>
+
+</div>
+<div class="screenCar" *ngIf="isChoiced"><h2>Dziękujemy za złożenie rezerwacji.</h2></div>
+
+

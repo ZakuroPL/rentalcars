@@ -1,2 +1,14 @@
 <app-bar></app-bar>
+<app-cars [hidden]="!(interaction.isCar$ | async)"></app-cars>
+<app-form [hidden]="interaction.isCar$ | async"></app-form>
+
+<footer class="blueBar">
+  &nbsp;
+  <div class="yellowBar" style="color: black; text-align:center">
+    <h2>Chcesz zarezerwować przez telefon?</h2>
+    <h3>Zadzwoń!</h3>
+    <h3>500-500-500</h3>
+  </div>
+  &nbsp;
+</footer>
 

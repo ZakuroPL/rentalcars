@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BarComponent } from './bar/bar.component';
 import { CarsComponent } from './cars/cars.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarComponent,
-    CarsComponent
+    CarsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

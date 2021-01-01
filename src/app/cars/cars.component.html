@@ -1,6 +1,5 @@
 
-<div id="screenCar">
-    <div *ngIf="!isChoiced">
+<div class="screenCar">
         <div id="loading" *ngIf="isLoading">
             <img src="../../assets/gif.gif">
         </div>
@@ -19,8 +18,8 @@
                     </table>
                 </div>
                 <div class="car-price" [ngClass]="{visible: car}">
-                    <h3>{{car.price * amountOfDays}} zł</h3>
-                    <p>cena za {{ amountOfDays }} 
+                    <h3>{{car.price * obj.amountOfDays}} zł</h3>
+                    <p>cena za {{ obj.amountOfDays }} 
                         <span *ngIf="amountOfDays == 1">dzień.</span>
                         <span *ngIf="amountOfDays > 1">dni.</span>
                     </p>
@@ -28,40 +27,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-choiced-car" *ngIf="isChoiced">
-        <div>
-            <img src="../../assets/{{pictureName}}.jpg"><br><br><br>
-        </div>
-        <div>
-            <h2>Wynajem auta {{ carName }}.</h2>
-            <h3>na {{ amountOfDays }}
-                <span *ngIf="amountOfDays == 1">dzień.</span>
-                <span *ngIf="amountOfDays > 1">dni.</span>
-            </h3>
-            <h3 style="border-bottom: 1px black solid; margin-bottom: 50px; padding-bottom: 15px;">za {{ rentPrice }} zł.</h3>
-            <form [formGroup]="rentalForm" (submit)="sendForm()">
-                <label>Imię:<br><input formControlName="firstName" name="firstName" type="text"></label><br>
-                <p class="errorInput" *ngIf="isClicked && f.firstName.errors?.required">wprowadź imię.</p>
-
-                <label>Nazwisko:<br><input formControlName="lastName" name="lastName" type="text"></label><br>
-                <p class="errorInput" *ngIf="isClicked && f.lastName.errors?.required">wprowadź nazwisko.</p>
-
-                <label>Numer telefonu:<br><input formControlName="phoneNumber" name="phoneNumber" type="tel"></label><br>
-                <p class="errorInput" *ngIf="isClicked && f.phoneNumber.errors?.required">wprowadź nr. telefonu.</p>
-                <p class="errorInput" *ngIf="isClicked && f.phoneNumber.errors?.pattern">wprowadź numer 000000000</p>
-
-                <label>email:<br><input formControlName="email" name="email" type="email"></label><br>
-                <p class="errorInput" *ngIf="isClicked && f.email.errors?.required">wprowadź adres email.</p>
-                <p class="errorInput" *ngIf="isClicked && f.email.errors?.pattern">wprowadź poprawny adres email.</p>
-                <br>
-                <button class="button" (click)="isChoiced=false; rentalForm.reset();">Cofnij</button>
-                <button class="button" style="margin-left: 15px;" type="submit">Rezerwuj</button>
-            </form>
-
-            
-        </div>
-    </div>
-    <div *ngIf="isConfirm"><h2>Dziękujemy za złożenie rezerwacji.</h2></div>
     <div *ngIf="isEmpty"><h2>Przepraszamy, ale wszystkie auta zostały już zarezerwowane w wybranym przez Ciebie terminie.</h2></div>
 </div>

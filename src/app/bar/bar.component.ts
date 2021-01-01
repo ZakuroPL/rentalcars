@@ -1,12 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {NgbDate, NgbCalendar, NgbDateParserFormatter, NgbTimeStruct, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from '../api.service';
+import { InteractionService } from '../interaction.service';
+import { barObject } from '../models';
 
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',
-  styleUrls: ['./bar.component.sass'],
-
+  styleUrls: ['./bar.component.sass']
 })
 export class BarComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class BarComponent implements OnInit {
   screenWidth:number ;
 
   constructor(
-    private apiService: ApiService,
+    private interaction: InteractionService,
     private calendar: NgbCalendar, 
     public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getNext(calendar.getToday(), 'd', 1)
@@ -42,8 +42,8 @@ export class BarComponent implements OnInit {
     this.todayDate = { day: todayDate.getDate(), month: todayDate.getMonth() + 1, year: todayDate.getFullYear()};
     this.dateMaxToRent = { day: dateMaxToRent.getDate(), month: dateMaxToRent.getMonth() + 1, year: dateMaxToRent.getFullYear()};
   }
-  @HostListener('window:resize', ['$event'])
-  changeCalendar(event) {
+  @HostListener('window:resize')
+  changeCalendar() {
     this.screenWidth = window.innerWidth;
   }
 //boostrap datepicker
@@ -80,7 +80,12 @@ export class BarComponent implements OnInit {
     this.dateTo = new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day, this.timeTo.hour, this.timeTo.minute);
     this.amountOfDays = (this.dateTo.getTime() - this.dateFrom.getTime())/86400000;
     this.amountOfDays = Math.ceil(this.amountOfDays);
-    this.apiService.sendEvent();
+    let obj:barObject = Object.create({
+      dateFrom: this.dateFrom,
+      dateTo: this.dateTo,
+      amountOfDays: this.amountOfDays
+    });
+    this.interaction.barMessage(obj);
   }
 
 }
