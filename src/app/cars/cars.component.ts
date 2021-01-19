@@ -13,6 +13,7 @@ import { barObject, carObject } from '../models';
 export class CarsComponent implements OnInit {
 
   cars:Car[];
+  carsFilter:Car[];
   rentalList:Rental[];
 
   choicedCar:number;
@@ -27,12 +28,13 @@ export class CarsComponent implements OnInit {
   isClicked:boolean = false;
   isConfirm:boolean = false;
   isEmpty:boolean = false;
+  isFilterEmpty:boolean = false;
 
   obj:barObject;
 
   constructor(
     private apiService: ApiService,
-    private interaction: InteractionService,
+    public interaction: InteractionService,
     ) { 
     this.interaction.barMessage$.subscribe(
       (data:barObject) => {
@@ -40,6 +42,7 @@ export class CarsComponent implements OnInit {
         this.showCarList();
       }
     );
+    this.interaction.getFilterEvent().subscribe(()=> this.filter());
   }
   ngOnInit(): void {
   }
@@ -84,7 +87,7 @@ export class CarsComponent implements OnInit {
         this.checkAmount ++;
       }
     }
-    this.isLoading = false;
+    this.filter();
     this.isEmpty = this.cars.length == this.checkAmount;
   }
   getCarId(id:number, car:string, price:number, carName:string){
@@ -95,5 +98,26 @@ export class CarsComponent implements OnInit {
       rentPrice: price * this.obj.amountOfDays
     });
     this.interaction.carMessage(obj);
+  }
+  filter(){
+    if(this.cars){
+      let num:number = 0;
+      this.carsFilter = [];
+      this.carsFilter.push.apply(this.carsFilter,this.cars)
+      for(let car of this.carsFilter){
+        if(!this.interaction.isSmall && car.trunk=="mały") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.isMedium && car.trunk=="średni") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.isBig && car.trunk=="duży") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.isStickShift && car.gearbox=="manualna") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.isAutomatic && car.gearbox=="automatyczna") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.is95 && car.fuel=="benzyna") {delete this.carsFilter[car.id - 1]; num++}
+        else if(!this.interaction.isDiesel && car.fuel=="diesel") {delete this.carsFilter[car.id - 1]; num++}
+      }
+      this.isFilterEmpty = num == this.carsFilter.length
+    }
+    this.carsFilter.sort((a:Car, b:Car)=>{
+      return a.price-b.price;
+    })
+    this.isLoading = false;
   }
 }

@@ -28,8 +28,10 @@ export class BarComponent implements OnInit {
 
   screenWidth:number ;
 
+  isFilterAnim:boolean = false;
+
   constructor(
-    private interaction: InteractionService,
+    public interaction: InteractionService,
     private calendar: NgbCalendar, 
     public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getNext(calendar.getToday(), 'd', 1)
@@ -87,5 +89,10 @@ export class BarComponent implements OnInit {
     });
     this.interaction.barMessage(obj);
   }
+  clickFilter(e){
+    const classList = e.target.classList;
+    const classes = e.target.className;
+    classes.includes('clickedFilter') ? classList.remove('clickedFilter') : classList.add('clickedFilter');
 
+  }
 }

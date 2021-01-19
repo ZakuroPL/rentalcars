@@ -29,6 +29,8 @@ h1
     margin: 10px auto 50px auto
     padding: 20px
     width: 1000px
+    // transition: max-height 1s
+    // max-height: 150px
     position: relative
     @media screen and (max-width: 999px)
         width: auto
@@ -42,6 +44,69 @@ h1
         position: relative
         width: 314px
         margin: auto
+.filter
+    display: flex
+    flex-wrap: wrap
+    padding-top: 30px
+    width: fit-content
+    margin: 0px auto
+    transition: max-height 0.8s linear
+    max-height: 0px
+    overflow: hidden
+    justify-content: center
+    @media screen and (max-width: 999px)
+        margin-top: 180px
+    div
+        width: 80px
+        height: 80px
+        margin: 5px 5px 5px 5px
+        background-color: white
+        text-align: center
+        color: black
+        @media screen and (max-width: 420px)
+            width: 60px
+            height: 60px
+    img
+        width: 100%
+        padding: 3px
+        @media screen and (max-width: 420px)
+            padding: 2px 2px 0px 2px
+    p
+        margin: 0px
+        @media screen and (max-width: 420px)
+            font-size: 12px
+    h2 
+        font-size: 42px
+        padding-top: 13px
+        @media screen and (max-width: 420px)
+            font-size: 37px
+            padding-top: 6px
+.gearboxFoto 
+    img
+        height: 56px
+        width: auto
+        @media screen and (max-width: 420px)
+            height: 39px
+
+.eventClick
+    background-color: #838383
+    position: absolute
+    width: 100%
+    height: 100%
+    transform: translate( -5px, -5px)
+    z-index: 999
+    opacity: 0
+    user-select: none
+.clickedFilter
+    opacity: 0.6
+.filterAnim
+    transition: max-height 0.8s linear
+    max-height: 200px
+    @media screen and (max-width: 690px)
+        max-height: 230px
+.relative
+    position: relative
+    cursor: pointer
 #inputTo
     @media screen and (max-width: 999px)
         position: absolute
@@ -92,6 +157,13 @@ h1
     position: absolute
     left: 820px
     top: 38px
+    @media screen and (max-width: 999px)
+        left: 65px
+        top: 220px
+#buttonFilter
+    position: absolute
+    left: 40px
+    top: 100px
     @media screen and (max-width: 999px)
         left: 0px
         top: 220px

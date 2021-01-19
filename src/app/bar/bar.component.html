@@ -119,16 +119,48 @@
       </form>
 
 
-
-
-      
-    
       <ngb-timepicker id="timeFrom" [minuteStep]="minuteStep" [(ngModel)]="timeFrom"></ngb-timepicker>
       <ngb-timepicker id="timeTo" [minuteStep]="minuteStep" [(ngModel)]="timeTo"></ngb-timepicker>
       <p id="textFrom">wynajem od:</p>
       <p id="textTo">wynajem do:</p>
       <br><br>
       <button id="button-yellow-bar" class="button" (click)="buttonFunction()">szukaj</button>
+      <button id="buttonFilter" class="button" (click)="isFilterAnim = !isFilterAnim">filtruj</button>
+    </div>
+    <div class="filter" [ngClass]="{filterAnim: isFilterAnim}">
+      <div class="relative">
+        <div class="eventClick" (click)="clickFilter($event); interaction.isSmall = !interaction.isSmall; interaction.sendFilterEvent()">&nbsp;</div>
+        <img src="../../assets/car-smart-forfour.jpg">
+        <p>małe</p>
+      </div>
+      <div class="relative">
+        <div class="eventClick" (click)="clickFilter($event); interaction.isMedium = !interaction.isMedium; interaction.sendFilterEvent()">&nbsp;</div>
+        <img src="../../assets/car-toyota-corolla.jpg">
+        <p>średnie</p>
+      </div>
+      <div class="relative">
+        <div class="eventClick" (click)="clickFilter($event); interaction.isBig = !interaction.isBig; interaction.sendFilterEvent()">&nbsp;</div>
+        <img src="../../assets/car-volkswagen-tiguan.jpg">
+        <p>duże</p>
+      </div>
+      <div class="relative gearboxFoto">
+        <div class="eventClick" (click)="clickFilter($event); interaction.isStickShift = !interaction.isStickShift; interaction.sendFilterEvent()">&nbsp;</div>
+        <img src="../../assets/gearbox.png">
+        <p>manualna</p>
+      </div>
+      <div class="relative gearboxFoto"> 
+        <div class="eventClick " (click)="clickFilter($event); interaction.isAutomatic = !interaction.isAutomatic; interaction.sendFilterEvent()">&nbsp;</div>
+        <img src="../../assets/gearbox.png">
+        <p>automat</p>
+      </div>
+      <div class="relative ">
+        <div class="eventClick" (click)="clickFilter($event); interaction.is95 = !interaction.is95; interaction.sendFilterEvent()">&nbsp;</div>
+        <h2>95</h2>
+      </div>
+      <div class="relative">
+        <div class="eventClick" (click)="clickFilter($event); interaction.isDiesel = !interaction.isDiesel; interaction.sendFilterEvent()">&nbsp;</div>
+        <h2>ON</h2>
+      </div>
     </div>
   </div>
   &nbsp;

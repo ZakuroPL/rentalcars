@@ -3,7 +3,7 @@
         <div id="loading" *ngIf="isLoading">
             <img src="../../assets/gif.gif">
         </div>
-        <div *ngFor="let car of cars">
+        <div *ngFor="let car of carsFilter">
             <div *ngIf="car && !isLoading && !isConfirm" class="carFromList">
                 <div class="car-photo">
                     <img src="../../assets/{{car.carPicture}}.jpg">
@@ -20,12 +20,13 @@
                 <div class="car-price" [ngClass]="{visible: car}">
                     <h3>{{car.price * obj.amountOfDays}} zł</h3>
                     <p>cena za {{ obj.amountOfDays }} 
-                        <span *ngIf="amountOfDays == 1">dzień.</span>
-                        <span *ngIf="amountOfDays > 1">dni.</span>
+                        <span *ngIf="obj.amountOfDays == 1">dzień.</span>
+                        <span *ngIf="obj.amountOfDays > 1">dni.</span>
                     </p>
                     <button class="button" (click)="getCarId(car.id, car.carPicture, car.price, car.car)">Rezerwuj</button>
                 </div>
             </div>
         </div>
     <div *ngIf="isEmpty"><h2>Przepraszamy, ale wszystkie auta zostały już zarezerwowane w wybranym przez Ciebie terminie.</h2></div>
+    <div *ngIf="isFilterEmpty"><h2>Nie znaleziono aut spełniających Twoje kryteria.</h2></div>
 </div>
