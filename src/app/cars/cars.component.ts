@@ -35,7 +35,7 @@ export class CarsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     public interaction: InteractionService,
-    ) { 
+    ) {
     this.interaction.barMessage$.subscribe(
       (data:barObject) => {
         this.obj = data;
@@ -114,10 +114,10 @@ export class CarsComponent implements OnInit {
         else if(!this.interaction.isDiesel && car.fuel=="diesel") {delete this.carsFilter[car.id - 1]; num++}
       }
       this.isFilterEmpty = num == this.carsFilter.length
+      this.carsFilter.sort((a:Car, b:Car)=>{
+        return a.price-b.price;
+      })
     }
-    this.carsFilter.sort((a:Car, b:Car)=>{
-      return a.price-b.price;
-    })
     this.isLoading = false;
   }
 }
